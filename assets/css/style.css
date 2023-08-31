@@ -129,11 +129,25 @@ header button {
   background-color: aliceblue;
 }
 
-.backImage{
-  object-fit: cover;
+.backImage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.blurry-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  filter: blur(5px); /* Blur miktarını istediğiniz gibi ayarlayabilirsiniz */
 }
+
+
+
 
 .panelContainer {
   position: absolute;
@@ -151,11 +165,11 @@ header button {
   flex-direction: column;
   border: 1px solid black;
   background-color: #171717;
-  width: 221px;
-  height: 324px;
+  width: 251px;
+  height: 354px;
   border-radius: 25px;
   text-align: center;
-  padding-inline: 25px;
+  padding-inline: 20px;
   gap: 10px;
   /* width: 285px; */
   height: 370px;
@@ -208,6 +222,28 @@ header button {
   border-right-color:yellow; 
 }
 
+.input-phone {
+  display: none;
+  align-items: center;
+  border-radius: 25px;
+  color: rgb(255, 255, 255);
+  padding: 9px;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  background-color: #171717;
+  gap: 0.6em;
+  margin-bottom: 8px;
+  border-bottom-color: yellow;
+  border-right-color:yellow; 
+}
+
+.input-phone.active {
+  display: inline;
+}
+
+.input-phone:hover {
+  border-color: yellow;
+} 
+
 .input-password:hover {
   border-color: yellow;
 } 
@@ -227,6 +263,7 @@ header button {
 }
 
 .login-btn:hover {
+  transition: 600ms;
   background-color: yellow;
   color: #171717;
 }
@@ -244,11 +281,13 @@ header button {
 }
 
 .signup-btn:hover {
+  transition: 600ms;
+
   background-color: yellow;
   color: #171717;
 }
 
-.forgot-password {
+.forgot-passwordBtn {
   padding: 6px 43px;
   border-radius: 5px;
   background-color: #252525;
@@ -258,7 +297,9 @@ header button {
   
 }
 
-.forgot-password:hover {
+.forgot-passwordBtn:hover {
+  transition: 600ms;
+
   background-color: yellow;
   color: #171717;
 }

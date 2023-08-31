@@ -1,12 +1,41 @@
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDc5N2RkNGU0MWU3ODE1MWY0NmE1MTBmM2M1MmJiMSIsInN1YiI6IjY0ZWZjNGVhY2FhNTA4MDE0YzhiMzJhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UWMW2nEvwjByMme8MI_Pgwc3l0j6wH5NLB5Zgf1a26k'
-    }
-  };
-  
-  fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+const signUpBtn = document.querySelector(".signup-btn")
+const logInBtn = document.querySelector(".login-btn")
+const forgotPasswordBtn = document.querySelector(".forgot-passwordBtn")
+const nameInput = document.querySelector(".input-name")
+const phoneInput = document.querySelector(".input-phone")
+const passwordInput = document.querySelector(".input-password")
+
+signUpBtn.addEventListener("click",(e) => {
+  e.preventDefault()
+  phoneInput.classList.toggle("active")
+  e.target.parentElement.parentElement.innerHTML = `<p class="text">SignUp</p>
+  <div class="Username">
+      <input class="input-name" placeholder="Username.." type="name">
+  </div>
+  <div class="password">
+      <input class="input-phone active" placeholder="Phone.." type="text">
+      <input class="input-password" placeholder="Generate Password.." type="text">
+  </div>
+  <div class="buttons">
+      <button class="login-btn">Login</button>
+      <button class="signup-btn">Sign Up</button>
+  </div>
+  <button class="forgot-passwordBtn">Forgot Password</button>`
+});
+
+logInBtn.addEventListener("click",(e) => {
+  e.preventDefault()
+  e.target.parentElement.parentElement.innerHTML = `<p class="text">Login</p>
+  <div class="Username">
+      <input class="input-name" placeholder="Username.." type="name">
+  </div>
+  <div class="password">
+      <input class="input-phone active" placeholder="Phone.." type="text">
+      <input class="input-password" placeholder="Generate Password.." type="text">
+  </div>
+  <div class="buttons">
+      <button class="login-btn">Login</button>
+      <button class="signup-btn">Sign Up</button>
+  </div>
+  <button class="forgot-passwordBtn">Forgot Password</button>`
+});
