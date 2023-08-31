@@ -1,0 +1,264 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+header  {
+  right: 0;
+  z-index: 15;
+  position:absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+header button {
+  background-color: transparent;
+  border-radius: 0px 0px 0px 12px;
+  color: yellow;
+  font-size: 30px;
+  padding: 16px;
+  border: none; 
+  margin-bottom: 40%;
+  margin-right: 4px;
+}
+
+.container {
+  height: 100%;
+  display: none;
+  flex-direction: column;
+}
+
+.container.active {
+  display: flex;
+}
+
+.upper-div {
+  padding: 4px;
+  flex: 60%;
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+  position: relative;
+}
+
+.upper-div img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+
+
+.upper-div h1 {
+  z-index: 3;
+  position: absolute;
+  color: rgb(255, 208, 0);
+  bottom: 10%;
+  left: 5%;
+}
+
+.subtitle {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  /* background-color: rgba(255, 255, 0, 0.226); */
+  z-index: 5;
+  bottom: 3%;
+  height: 2rem;
+  left: 5%;
+}
+
+.subtitle h5 {
+  color: aliceblue;
+  bottom: 3%;
+  margin-left: 20px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.getTicketBtn {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: large;
+  background-color: rgba(255, 255, 0, 0.226);
+  z-index: 5;
+  bottom: 3%;
+  height: 2rem;
+  left: 5%;
+  border: none;
+  border-radius: 4px;
+  transition: 400ms;
+}
+
+.getTicketBtn:hover {
+  background-color: yellow;
+}
+
+
+ 
+
+.upper-div h4 {
+  z-index: 3;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  bottom: 6%;
+  left: 5%;
+}
+
+
+
+.lower-div {
+  display: flex;
+  flex-direction: column;
+  flex: 40%;
+  /* background-color: rgb(255, 187, 0); */
+}
+
+.popularMovie {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.popularMovie .movie {
+  background-color: aliceblue;
+}
+
+.backImage{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.panelContainer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.form {
+  box-shadow: 10px 10px 28px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 10px 10px 28px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 28px 0px rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: #171717;
+  width: 221px;
+  height: 324px;
+  border-radius: 25px;
+  text-align: center;
+  padding-inline: 25px;
+  gap: 10px;
+  /* width: 285px; */
+  height: 370px;
+  
+}
+
+
+
+.form:hover {
+  transform: scale(1.1);
+}
+
+
+.text {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  margin: 32px;
+  font-size: 1.2em;
+  font-size: 18px;
+}
+
+.input-name {
+  align-items: center;
+  border-radius: 25px;
+
+  color: rgb(255, 255, 255);
+  padding: 9px;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  background-color: #171717;
+  gap: 0.6em;
+  margin-bottom: 8px;
+  border-bottom-color: yellow;
+  border-right-color:yellow;
+}
+
+.input-name:hover {
+  border-color: yellow;
+}
+
+.input-password {
+  align-items: center;
+  border-radius: 25px;
+  color: rgb(255, 255, 255);
+  padding: 9px;
+  box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  background-color: #171717;
+  gap: 0.6em;
+  margin-bottom: 8px;
+  border-bottom-color: yellow;
+  border-right-color:yellow; 
+}
+
+.input-password:hover {
+  border-color: yellow;
+} 
+.buttons {
+ display: flex;
+ justify-content: center;
+ margin-top: 35px;
+ gap: 5px;
+}
+
+.login-btn {
+  padding: 6px 25px;
+  color: rgb(255, 255, 255);
+  background-color: #252525;
+  border: none;
+  border-radius: 5px;
+}
+
+.login-btn:hover {
+  background-color: yellow;
+  color: #171717;
+}
+
+.login-all {
+  margin-block: 30px;
+
+}
+.signup-btn {
+  padding: 6px 25px;
+  color: rgb(255, 255, 255);
+  background-color: #252525;
+  border: none;
+  border-radius: 5px;
+}
+
+.signup-btn:hover {
+  background-color: yellow;
+  color: #171717;
+}
+
+.forgot-password {
+  padding: 6px 43px;
+  border-radius: 5px;
+  background-color: #252525;
+  border: none;
+  color: rgb(255, 255, 255);
+  margin-block: 8px;
+  
+}
+
+.forgot-password:hover {
+  background-color: yellow;
+  color: #171717;
+}
