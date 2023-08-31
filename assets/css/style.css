@@ -26,14 +26,15 @@ header button {
 }
 
 .container {
-  height: 100%;
   display: none;
+  height: 100%;
   flex-direction: column;
 }
 
-.container.active {
+.container.active{
   display: flex;
 }
+
 
 .upper-div {
   padding: 4px;
@@ -136,6 +137,10 @@ header button {
   overflow: hidden;
 }
 
+.backImage.deactive {
+  display: none;
+}
+
 .blurry-image {
   position: absolute;
   top: 0;
@@ -143,7 +148,7 @@ header button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(5px); /* Blur miktarını istediğiniz gibi ayarlayabilirsiniz */
+  filter: blur(5px);
 }
 
 
@@ -212,8 +217,8 @@ header button {
 .input-password {
   align-items: center;
   border-radius: 25px;
-  color: rgb(255, 255, 255);
   padding: 9px;
+  color: white;
   box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
   background-color: #171717;
   gap: 0.6em;
@@ -226,7 +231,7 @@ header button {
   display: none;
   align-items: center;
   border-radius: 25px;
-  color: rgb(255, 255, 255);
+  color: white;
   padding: 9px;
   box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
   background-color: #171717;
@@ -302,4 +307,37 @@ header button {
 
   background-color: yellow;
   color: #171717;
+}
+
+.warn {
+  background-color: brown;
+  animation: warn 0.7s ease 0s 1 normal forwards;
+}
+
+@keyframes warn {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+
+	10%,
+	30%,
+	50%,
+	70% {
+		transform: translateX(-9px);
+	}
+
+	20%,
+	40%,
+	60% {
+		transform: translateX(19px);
+	}
+
+	80% {
+		transform: translateX(7px);
+	}
+
+	90% {
+		transform: translateX(-7px);
+	}
 }
