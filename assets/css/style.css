@@ -192,9 +192,23 @@ header button {
   text-align: center;
   color: rgb(255, 255, 255);
   margin: 32px;
-  font-size: 1.2em;
   font-size: 18px;
 }
+
+.detailmsg {
+  text-align: center;
+  color: rgb(255, 231, 13);
+  font-size: 10px;
+  /* position: absolute; */
+}
+
+.text.changer {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  margin: 16px;
+  font-size: 18px;
+}
+
 
 .input-name {
   align-items: center;
@@ -300,7 +314,7 @@ header button {
   color: rgb(255, 255, 255);
   margin-block: 8px;
   
-}
+} 
 
 .forgot-passwordBtn:hover {
   transition: 600ms;
