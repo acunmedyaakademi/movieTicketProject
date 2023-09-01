@@ -309,8 +309,17 @@ header button {
   color: #171717;
 }
 
+
+
+
+
+input:focus{
+  outline:none;
+
+}
+
 .warn {
-  background-color: brown;
+  background-color: #ffe500;
   animation: warn 0.7s ease 0s 1 normal forwards;
 }
 
