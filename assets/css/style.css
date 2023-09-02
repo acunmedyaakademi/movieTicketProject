@@ -353,3 +353,57 @@ input:focus{
 		transform: translateX(-7px);
 	}
 }
+
+/* lower-all-movie filter start*/
+
+.movie-list {
+  background-color: #171717;
+}
+
+.movie-list-title {
+  color: yellow;
+  padding-inline: 30px;
+}
+
+
+.movie-card {
+  list-style: none;
+  position: relative;
+  padding: 0;
+
+
+}
+
+.movie-card-img {
+  width: 270px;
+  border: 1px solid yellow;
+  border-radius: 30px;
+}
+
+.movie-control {
+  background-color: #252525;
+}
+.movie-text {
+  color: yellow;
+}
+
+
+
+.movie-card-text {
+  background-color: rgb(40, 40, 40, 0.4);
+  padding: 0 10px;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  padding-inline: 50px;
+  padding-block: 10px ;
+}
+
+
+.movie-mid {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 300px;
+  /* asagı bakmak için yapıldı silincek unutma */
+}
