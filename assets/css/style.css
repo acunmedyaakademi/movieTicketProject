@@ -374,11 +374,28 @@ input:focus{
 
 }
 
+.movie-card-text {
+  display: none;
+}
+
 .movie-card-img {
-  width: 270px;
+  width: 195px;
   border: 1px solid yellow;
   border-radius: 30px;
+  transition: 0.1s all ease-in-out;
+
 }
+
+.movie-card-img:hover {
+  transform: scale(1.1);
+}
+
+.movie-card:hover .movie-card-text {
+  transform: scale(1.1);
+  opacity: 1;
+  display: block;
+} 
+
 
 .movie-control {
   background-color: #252525;
@@ -392,8 +409,8 @@ input:focus{
 .movie-card-text {
   background-color: rgb(40, 40, 40, 0.4);
   padding: 0 10px;
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 19px;
+  font-weight: 500;
   position: absolute;
   top: 10px;
   padding-inline: 50px;
