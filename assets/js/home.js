@@ -1,6 +1,6 @@
 const rightDiv = document.querySelector(".rightMovie");
 const popularMovie = document.querySelector(".upperMovie")
-const nowPlaying = document.querySelector(".lowerMovie")
+const topRated = document.querySelector(".lowerMovie")
 const postPath = "http://image.tmdb.org/t/p/w500";
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDc5N2RkNGU0MWU3ODE1MWY0NmE1MTBmM2M1MmJiMSIsInN1YiI6IjY0ZWZjNGVhY2FhNTA4MDE0YzhiMzJhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UWMW2nEvwjByMme8MI_Pgwc3l0j6wH5NLB5Zgf1a26k';
 
@@ -28,7 +28,6 @@ async function fetchMovieData(url) {
 async function showMoviesUpcoming(iswork) {
     if(!iswork){
         return console.log("You can't hack this system, log in and be a man!")
-
     }
     const pageCount = 20;
     const requests = [];
@@ -40,13 +39,13 @@ async function showMoviesUpcoming(iswork) {
 
     try {
         const responses = await Promise.all(requests);
+        rightDiv.children[1].innerHTML = "";
         responses.forEach(data => {
             if (data && data.results) {
                 data.results.forEach(movie => {
-                    if(movie.poster_path == null){
+                    if(movie.backdrop_path == null){
                         return
                     }
-                    console.log(movie);
                     const movieElement = document.createElement('div');
                     movieElement.classList.add('movie');
                     movieElement.innerHTML = `
@@ -82,19 +81,26 @@ async function showMoviesPopular(iswork) {
 
     try {
         const responses = await Promise.all(requests);
+        popularMovie.innerHTML = ""
         responses.forEach(data => {
             if (data && data.results) {
                 data.results.forEach(movie => {
-                    if(movie.poster_path == null){
+                    if(movie.backdrop_path == null){
                         return
                     }
-                    console.log(movie);
                     const movieElement = document.createElement('div');
                     movieElement.classList.add('moviePopular');
                     movieElement.innerHTML = `
-                        <div class="upComing">
-                            <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}" id="${movie.id}">
+                    <div class="upComing">
+                        <div class="inside">
+                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}/İmage">
+                            <div class="info">
+                                <p>${movie.title} | Vote Average: ${movie.vote_average}/10</p>
+                                <h5>${movie.overview}</h5>
+                            </div>
                         </div>
+                        <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}/İmage" id="${movie.id}">
+                    </div>
                     `;
                     popularMovie.appendChild(movieElement);
                 });
@@ -119,13 +125,13 @@ async function showMoviesToprated(iswork) {
 
     try {
         const responses = await Promise.all(requests);
+        topRated.innerHTML = ""
         responses.forEach(data => {
             if (data && data.results) {
                 data.results.forEach(movie => {
                     if(movie.poster_path == null){
                         return
                     }
-                    console.log(movie);
                     const movieElement = document.createElement('div');
                     movieElement.classList.add('movieRated');
                     movieElement.innerHTML = `
@@ -133,7 +139,7 @@ async function showMoviesToprated(iswork) {
                             <img src="${postPath}${movie.poster_path}" alt="${movie.title}" id="${movie.id}">
                         </div>
                     `;
-                    nowPlaying.appendChild(movieElement);
+                    topRated.appendChild(movieElement);
                 });
             }
         });
@@ -141,3 +147,5 @@ async function showMoviesToprated(iswork) {
         console.error('Error fetching and displaying data:', error);
     }
 }
+
+

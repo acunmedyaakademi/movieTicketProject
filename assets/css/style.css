@@ -324,6 +324,7 @@ input:focus{
 }
 
 .lower {
+  min-height: 370px;
   position: absolute;
   bottom: 20px;
   display: flex;
@@ -332,13 +333,14 @@ input:focus{
 }
 
 .lowerMovie {
+
   bottom: 20px;
   /* position: absolute; */
   display: flex;
   flex-direction: row;
   gap: 24px;
   z-index: 1;
-  overflow-x: hidden;
+  overflow: scroll;
 }
 
 
@@ -353,6 +355,7 @@ input:focus{
       transform: translateX(0);
   }
 }
+
 .centerMovie header {
   text-align: center;
   color: aliceblue;
@@ -382,7 +385,7 @@ input:focus{
 }
 
 .upComing img:hover {
-  transform: scale(1.02);
+  transform: scale(1.015);
 }
 
 .upComing img {
@@ -402,9 +405,6 @@ input:focus{
 }
 
 .upperMovie img {
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   border: 3px solid black;
   object-fit:cover;
   border-radius: 14px;
@@ -419,8 +419,8 @@ input:focus{
   -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
   border: 3px solid black;
   border-radius: 14px;
-  width:  200px;
-  height: 300px;
+  width:  150px;
+  height: 250px;
   transition: 400ms;
 }
 
@@ -441,4 +441,92 @@ input:focus{
 }
 .title h5 {
   color: rgb(48, 48, 48);
+}
+
+/* loader  */
+
+.rightMovie .custom-loader {
+  top: 400px;
+  right: 150px;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: grid;
+}
+
+.centerMovie .custom-loader {
+  margin-left: 450px;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  display: grid;
+}
+
+
+
+.custom-loader::before,
+.custom-loader::after {
+  content: "";
+  grid-area: 1/1;
+  --c: radial-gradient(farthest-side,#1692f8 92%,rgba(179, 53, 53, 0));
+  background: var(--c) 50%  0, 
+      var(--c) 50%  100%, 
+      var(--c) 100% 50%, 
+      var(--c) 0    50%;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  animation: s2 1s infinite;
+}
+
+.custom-loader::before {
+  margin: 4px;
+  filter: hue-rotate(45deg);
+  background-size: 8px 8px;
+  animation-timing-function: linear
+}
+
+@keyframes s2 {
+ 
+  100% {
+    transform: rotate(.5turn)
+  }
+}
+
+.inside {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  align-items: center;
+  backdrop-filter: blur(0.8px);
+  width: 100%;
+  height: 105%;
+  gap: 25px;
+}
+
+.inside img {
+  margin-left: 15px;
+  border: none;
+  object-fit: cover;
+  width: 100px;
+  height: 150px;
+}
+
+.inside .info {
+  max-width: 260px;
+  color: #ff7171;
+  
+}
+
+.inside .info h5 {
+  font-family: Arial, Helvetica, sans-serif;
+  /* text-transform: uppercase; */
+  /* color: transparent; */
+}
+
+.inside .info p {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+
 }
