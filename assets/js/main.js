@@ -155,7 +155,9 @@ async function logIn() {
             panelContainer.innerHTML = ``;
             mainContainer.classList.add("active");
             backImage.classList.add("deactive");
-            showMovies()
+            showMoviesUpcoming()
+            showMoviesPopular()
+            showMoviesNowPlaying()
         } else {
             loginAllDiv.children[1].textContent = "User Name/Password wrong!";
             nameInput.classList.add("warn");

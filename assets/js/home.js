@@ -1,4 +1,5 @@
-const upperDiv = document.querySelector(".upper-div");
+const rightDiv = document.querySelector(".rightMovie");
+const popularMovie = document.querySelector(".upperMovie")
 const postPath = "http://image.tmdb.org/t/p/w500";
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDc5N2RkNGU0MWU3ODE1MWY0NmE1MTBmM2M1MmJiMSIsInN1YiI6IjY0ZWZjNGVhY2FhNTA4MDE0YzhiMzJhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UWMW2nEvwjByMme8MI_Pgwc3l0j6wH5NLB5Zgf1a26k';
 
@@ -23,12 +24,12 @@ async function fetchMovieData(url) {
     }
 }
 
-async function showMovies() {
+async function showMoviesUpcoming() {
     const pageCount = 20;
     const requests = [];
 
     for (let page = 1; page <= pageCount; page++) {
-        const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
+        const url = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`;
         requests.push(fetchMovieData(url));
     }
 
@@ -44,9 +45,11 @@ async function showMovies() {
                     const movieElement = document.createElement('div');
                     movieElement.classList.add('movie');
                     movieElement.innerHTML = `
-                        <img src="${postPath}${movie.poster_path}" alt="Resim" id="${movie.id}">
+                        <div class="upComing">
+                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}" id="${movie.id}">
+                        </div>
                     `;
-                    upperDiv.appendChild(movieElement);
+                    rightDiv.appendChild(movieElement);
                 });
             }
         });
@@ -56,3 +59,37 @@ async function showMovies() {
     }
 }
 
+async function showMoviesPopular() {
+    const pageCount = 20;
+    const requests = [];
+
+    for (let page = 1; page <= pageCount; page++) {
+        const url = `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}`;
+        requests.push(fetchMovieData(url));
+    }
+
+    try {
+        const responses = await Promise.all(requests);
+        responses.forEach(data => {
+            if (data && data.results) {
+                data.results.forEach(movie => {
+                    if(movie.poster_path == null){
+                        return
+                    }
+                    console.log(movie);
+                    const movieElement = document.createElement('div');
+                    movieElement.classList.add('movie');
+                    movieElement.innerHTML = `
+                        <div class="upComing">
+                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}" id="${movie.id}">
+                        </div>
+                    `;
+                    popularMovie.appendChild(movieElement);
+                });
+            }
+        });
+        upperDiv.classList.add("active");
+    } catch (error) {
+        console.error('Error fetching and displaying data:', error);
+    }
+}
