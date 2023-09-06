@@ -25,7 +25,11 @@ async function fetchMovieData(url) {
     }
 }
 
-async function showMoviesUpcoming() {
+async function showMoviesUpcoming(iswork) {
+    if(!iswork){
+        return console.log("You can't hack this system, log in and be a man!")
+
+    }
     const pageCount = 20;
     const requests = [];
 
@@ -63,7 +67,11 @@ async function showMoviesUpcoming() {
     }
 }
 
-async function showMoviesPopular() {
+async function showMoviesPopular(iswork) {
+    if(!iswork){
+        return console.log("You can't hack this system, log in and be a man!")
+
+    }
     const pageCount = 20;
     const requests = [];
 
@@ -97,7 +105,10 @@ async function showMoviesPopular() {
     }
 }
 
-async function showMoviesToprated() {
+async function showMoviesToprated(iswork) {
+    if(!iswork){
+        return console.log("You can't hack this system, log in and be a man!")
+    }
     const pageCount = 20;
     const requests = [];
 
