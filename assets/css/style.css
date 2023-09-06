@@ -1,13 +1,16 @@
+
+
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
-  background-color: rgb(22, 22, 22);
 }
 
 .container header  {
-  background-color: #171717;
+  background-color: #1A161F;
+
+
   z-index: 15;
   /* position:absolute; */
   display: flex;
@@ -289,13 +292,13 @@ input:focus{
 }
 
 .leftMenu, .centerMovie, .rightMovie {
+  background-color: #1A161F;
   flex: 1;
   height: 100%;
-  border: 1px solid #000;
 }
 
 .centerMovie {
-  flex: 10;
+  flex: 8;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -356,7 +359,6 @@ input:focus{
 }
 
 .leftMenu {
-  background-color: rgb(22, 22, 22);
   flex: 2;
   z-index: 3;
 }
@@ -372,7 +374,6 @@ input:focus{
   overflow-x: hidden; 
   align-items: center;
   z-index: 3;
-  background-color: rgb(22, 22, 22);
 }
 
 .rightMovie header {
@@ -385,22 +386,19 @@ input:focus{
 }
 
 .upComing img {
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.212);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.315);
   border: 3px solid black;
   object-fit:cover;
-  border-radius: 14px;
-  width:  250px;
-  height: 350px;
+  border-radius: 4px;
+  width:  300px;
+  height: 150px;
   transition: 400ms;
 }
 
-.upComing {
-  /* max-width: 200px; */
-  margin: auto;
-  /* min-height: 400px; */
-  margin-bottom: 5px;
+.movie {
+  margin-bottom: 20px;
 }
 
 .upperMovie img {
@@ -410,7 +408,7 @@ input:focus{
   border: 3px solid black;
   object-fit:cover;
   border-radius: 14px;
-  width:  300px;
+  width:  400px;
   height: 200px;
   transition: 400ms;
 }
@@ -424,4 +422,23 @@ input:focus{
   width:  200px;
   height: 300px;
   transition: 400ms;
+}
+
+.title {
+  max-width: 290px;
+
+}
+
+.title h2,h5{
+  text-align: left;
+  margin: 0;
+}
+
+.title h2 {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: white;
+}
+.title h5 {
+  color: rgb(48, 48, 48);
 }

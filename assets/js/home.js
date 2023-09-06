@@ -47,7 +47,11 @@ async function showMoviesUpcoming() {
                     movieElement.classList.add('movie');
                     movieElement.innerHTML = `
                         <div class="upComing">
-                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}" id="${movie.id}">
+                            <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}" id="${movie.id}">,
+                            <div class="title">
+                                <h2>${movie.title}</h2>
+                                <h5>${movie.overview}</h5>
+                            </div>
                         </div>
                     `;
                     rightDiv.appendChild(movieElement);
@@ -78,10 +82,10 @@ async function showMoviesPopular() {
                     }
                     console.log(movie);
                     const movieElement = document.createElement('div');
-                    movieElement.classList.add('movie');
+                    movieElement.classList.add('moviePopular');
                     movieElement.innerHTML = `
                         <div class="upComing">
-                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}" id="${movie.id}">
+                            <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}" id="${movie.id}">
                         </div>
                     `;
                     popularMovie.appendChild(movieElement);
@@ -112,7 +116,7 @@ async function showMoviesToprated() {
                     }
                     console.log(movie);
                     const movieElement = document.createElement('div');
-                    movieElement.classList.add('movie');
+                    movieElement.classList.add('movieRated');
                     movieElement.innerHTML = `
                         <div class="upComing">
                             <img src="${postPath}${movie.poster_path}" alt="${movie.title}" id="${movie.id}">
