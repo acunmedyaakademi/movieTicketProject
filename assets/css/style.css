@@ -295,7 +295,7 @@ input:focus{
 }
 
 .centerMovie {
-  flex: 6;
+  flex: 10;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -318,6 +318,24 @@ input:focus{
   z-index: 1;
   overflow-x: hidden;
   animation: scroll 990000s infinite linear;
+}
+
+.lower {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lowerMovie {
+  bottom: 20px;
+  /* position: absolute; */
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  z-index: 1;
+  overflow-x: hidden;
 }
 
 
@@ -394,5 +412,16 @@ input:focus{
   border-radius: 14px;
   width:  300px;
   height: 200px;
+  transition: 400ms;
+}
+
+.lowerMovie img {
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  border: 3px solid black;
+  border-radius: 14px;
+  width:  200px;
+  height: 300px;
   transition: 400ms;
 }

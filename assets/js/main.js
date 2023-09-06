@@ -157,7 +157,7 @@ async function logIn() {
             backImage.classList.add("deactive");
             showMoviesUpcoming()
             showMoviesPopular()
-            showMoviesNowPlaying()
+            showMoviesToprated()
         } else {
             loginAllDiv.children[1].textContent = "User Name/Password wrong!";
             nameInput.classList.add("warn");
