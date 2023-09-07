@@ -2,33 +2,13 @@ const rightDiv = document.querySelector(".rightMovie");
 const popularMovie = document.querySelector(".upperMovie")
 const topRated = document.querySelector(".lowerMovie")
 const postPath = "http://image.tmdb.org/t/p/w500";
-const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDc5N2RkNGU0MWU3ODE1MWY0NmE1MTBmM2M1MmJiMSIsInN1YiI6IjY0ZWZjNGVhY2FhNTA4MDE0YzhiMzJhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UWMW2nEvwjByMme8MI_Pgwc3l0j6wH5NLB5Zgf1a26k';
-
-async function fetchMovieData(url) {
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${apiKey}`
-        }
-    };
-    try {
-        const response = await fetch(url, options);
-        if (!response.ok) {
-            throw new Error('HTTP Error: ' + response.status);
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error;
-    }
-}
 
 async function showMoviesUpcoming(iswork) {
     if(!iswork){
-        return console.log("You can't hack this system, log in and be a man!")
+        return console.log("log in and be a man!")
     }
+
+    setActiveHome(true)
     const pageCount = 20;
     const requests = [];
 
@@ -68,8 +48,7 @@ async function showMoviesUpcoming(iswork) {
 
 async function showMoviesPopular(iswork) {
     if(!iswork){
-        return console.log("You can't hack this system, log in and be a man!")
-
+        return console.log("log in and be a man!")
     }
     const pageCount = 20;
     const requests = [];
@@ -114,7 +93,7 @@ async function showMoviesPopular(iswork) {
 
 async function showMoviesToprated(iswork) {
     if(!iswork){
-        return console.log("You can't hack this system, log in and be a man!")
+        return console.log("log in and be a man!")
     }
     const pageCount = 20;
     const requests = [];
@@ -148,5 +127,3 @@ async function showMoviesToprated(iswork) {
         console.error('Error fetching and displaying data:', error);
     }
 }
-
-

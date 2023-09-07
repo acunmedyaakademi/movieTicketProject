@@ -4,9 +4,6 @@ const forgotPasswordBtn = document.querySelector(".forgot-passwordBtn");
 const nameInput = document.querySelector(".input-name");
 const phoneInput = document.querySelector(".input-phone");
 const passwordInput = document.querySelector(".input-password");
-const mainContainer = document.querySelector(".container");
-const panelContainer = document.querySelector(".panelContainer");
-const backImage = document.querySelector(".backImage");
 const form = document.querySelector(".form");
 const loginAllDiv = document.querySelector(".login-all");
 const blurryImage = document.querySelector(".blurry-image");
@@ -104,21 +101,6 @@ logInBtn.addEventListener("click", async (e) => {
     }
 });
 
-const fetchData = async (url) => {
-    try {
-        const response = await fetch(url, {
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3BndGZyenR2ZXFncXlja25xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MzQxMjM4NCwiZXhwIjoyMDA4OTg4Mzg0fQ.fxxdxsJkoR5d_1IsCiar6iiGa2WUi5UWAPo_N_dXggg",
-                "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3BndGZyenR2ZXFncXlja25xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MzQxMjM4NCwiZXhwIjoyMDA4OTg4Mzg0fQ.fxxdxsJkoR5d_1IsCiar6iiGa2WUi5UWAPo_N_dXggg" 
-            }
-        });
-        return await response.json();
-    } catch (error) {
-        console.error("Fetch error:");
-    }
-};
-
 const postData = async (url, data) => {
     // ChatGpt + koray eseri 
     try {
@@ -140,8 +122,6 @@ const postData = async (url, data) => {
 forgotPasswordBtn.addEventListener("click",(e) => {
     e.preventDefault()
     loginAllDiv.children[1].textContent = "Forgot Password is out of use!";
-
-    
 })
 
 async function signUp() {
@@ -180,12 +160,10 @@ async function logIn() {
     try {
         let users = await fetchData("https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users");
         if (users.find(x => nameInput.value === x.userName && passwordInput.value === x.password)) {
-            panelContainer.innerHTML = ``;
-            mainContainer.classList.add("active");
-            backImage.classList.add("deactive");
-            showMoviesUpcoming("true")
-            showMoviesPopular("true")
-            showMoviesToprated("true")
+            setActivePanel(false);
+            showMoviesUpcoming(true);
+            showMoviesPopular(true);
+            showMoviesToprated(true);
         } else {
             loginAllDiv.children[1].textContent = "User Name/Password wrong!";
             nameInput.classList.add("warn");
