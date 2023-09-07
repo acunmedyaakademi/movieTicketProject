@@ -13,7 +13,7 @@ function setActivePanel(set){
         set === true ? backImage.classList.remove("deactive"):backImage.classList.add("deactive")
 }
 
-// Fetch işlemleri SUPABASE 
+// Fetch GET işlemleri SUPABASE 
 const fetchData = async (url) => {
     try {
         const response = await fetch(url, {
@@ -28,6 +28,26 @@ const fetchData = async (url) => {
         console.error("Fetch error:");
     }
 };
+ 
+// Fetch POST işlemleri SUPABASE
+const postData = async (url, data) => {
+    // ChatGpt + koray eseri 
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3BndGZyenR2ZXFncXlja25xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MzQxMjM4NCwiZXhwIjoyMDA4OTg4Mzg0fQ.fxxdxsJkoR5d_1IsCiar6iiGa2WUi5UWAPo_N_dXggg",
+                "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3BndGZyenR2ZXFncXlja25xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MzQxMjM4NCwiZXhwIjoyMDA4OTg4Mzg0fQ.fxxdxsJkoR5d_1IsCiar6iiGa2WUi5UWAPo_N_dXggg"
+            },
+            body: JSON.stringify(data)
+        });""
+    } catch (error) {
+        console.error("Fetch error:");
+
+    }
+};
+
 
 // Fetch işlemleri TMBD MOVİE APİ 
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDc5N2RkNGU0MWU3ODE1MWY0NmE1MTBmM2M1MmJiMSIsInN1YiI6IjY0ZWZjNGVhY2FhNTA4MDE0YzhiMzJhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UWMW2nEvwjByMme8MI_Pgwc3l0j6wH5NLB5Zgf1a26k';
@@ -50,4 +70,14 @@ async function fetchMovieData(url) {
         console.error('Error fetching data:', error);
         throw error;
     }
+}
+
+
+// İnformation Mesajı ve Stil ayarları (loginAllDiv) ayarları 
+const loginAllDiv = document.querySelector(".login-all");
+function setLoginAllDiv (reset,setPanelName,setİnformation,addClass){
+    reset === true ?  (loginAllDiv.children[1].textContent = ""):null;
+    setPanelName === true ? (loginAllDiv.children[0].textContent = "SignUp"):(loginAllDiv.children[0].textContent = "LogIn");
+    setİnformation !== "" ? (loginAllDiv.children[1].textContent = setİnformation):null;
+    addClass === true ? (loginAllDiv.children[0].classList.add("changer")):(loginAllDiv.children[0].classList.remove("changer"))
 }
