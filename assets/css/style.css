@@ -340,7 +340,7 @@ input:focus{
   flex-direction: row;
   gap: 24px;
   z-index: 1;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 
@@ -513,7 +513,7 @@ input:focus{
 
 .inside .info {
   max-width: 260px;
-  color: #ff7171;
+  color: #ffffff;
   
 }
 

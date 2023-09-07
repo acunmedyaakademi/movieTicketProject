@@ -95,8 +95,9 @@ async function showMoviesPopular(iswork) {
                         <div class="inside">
                             <img src="${postPath}${movie.poster_path}" alt="${movie.title}/İmage">
                             <div class="info">
-                                <p>${movie.title} | Vote Average: ${movie.vote_average}/10</p>
-                                <h5>${movie.overview}</h5>
+                                <h3>${movie.title}</h3>
+                                <p>Release Date: ${movie.release_date}</p>
+                                <h5>Vote Average : ${movie.vote_average} | Vote Count : ${movie.vote_count}</h5>
                             </div>
                         </div>
                         <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}/İmage" id="${movie.id}">
