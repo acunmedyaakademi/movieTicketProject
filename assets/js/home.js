@@ -7,7 +7,6 @@ async function showMoviesUpcoming(iswork) {
     if(!iswork){
         return console.log("log in and be a man!")
     }
-
     setActiveHome(true)
     const pageCount = 20;
     const requests = [];
@@ -30,10 +29,10 @@ async function showMoviesUpcoming(iswork) {
                     movieElement.classList.add('movie');
                     movieElement.innerHTML = `
                         <div class="upComing">
-                            <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}" id="${movie.id}">,
+                            <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}" id="${movie.id}">
                             <div class="title">
                                 <h2>${movie.title}</h2>
-                                <h5>${movie.overview}</h5>
+                                <h5 class="deactive">${movie.overview}</h5>
                             </div>
                         </div>
                     `;
@@ -41,6 +40,7 @@ async function showMoviesUpcoming(iswork) {
                 });
             }
         });
+        showMoviesPopular(true);
     } catch (error) {
         console.error('Error fetching and displaying data:', error);
     }
@@ -86,6 +86,7 @@ async function showMoviesPopular(iswork) {
                 });
             }
         });
+        showMoviesToprated(true);
     } catch (error) {
         console.error('Error fetching and displaying data:', error);
     }
@@ -127,3 +128,46 @@ async function showMoviesToprated(iswork) {
         console.error('Error fetching and displaying data:', error);
     }
 }
+
+
+function resetDivHtml(tr,pm,rd) {
+    tr === true ? topRated.innerHTML = "":null;
+    pm === true ? popularMovie.innerHTML = "":null;
+    rd === true ? rightDiv.forEach(x => {
+        console.log(x);
+        if(x.className === "upComing"){
+            rightDiv.pop(x)
+        }
+    }):null;
+}
+
+window.addEventListener("hashchange",() => {
+    console.log("deneme");
+    setActiveHome(false)
+    setActivePanel(true)
+})
+
+
+rightDiv.addEventListener("mouseover",(e) => {
+    if(e.target.className === "upComing"){
+        e.target.children[1].children[1].className = "active"
+    }else if (e.target.tagName == "IMG"){
+        e.target.parentElement.children[1].children[1].className = "active"
+    }else if (e.target.className === "title"){
+        e.target.children[1].className = "active"
+    }else if(e.target.tagName == "H5"){
+        e.target.className = "active"
+    }
+})
+
+rightDiv.addEventListener("mouseout",(e) => {
+    if(e.target.className === "upComing"){
+        e.target.children[1].children[1].className = "deactive"
+    }else if (e.target.tagName == "IMG"){
+        e.target.parentElement.children[1].children[1].className = "deactive"
+    }else if (e.target.className === "title"){
+        e.target.children[1].className = "deactive"
+    }else if(e.target.tagName == "H5"){
+        e.target.className = "deactive"
+    }
+})

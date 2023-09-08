@@ -9,8 +9,6 @@ body, html {
 
 .container header  {
   background-color: #1A161F;
-
-
   z-index: 15;
   /* position:absolute; */
   display: flex;
@@ -55,9 +53,7 @@ body, html {
   overflow: hidden;
 }
 
-.backImage.deactive {
-  display: none;
-}
+
 
 .blurry-image {
   position: absolute;
@@ -83,7 +79,7 @@ body, html {
   
 }
 
-.panelContainer.deactive {
+.deactive {
   display: none;
 }
 
@@ -384,6 +380,8 @@ input:focus{
   z-index: 3;
 }
 
+
+
 .rightMovie header {
   text-align: center;
   color: aliceblue;
@@ -568,23 +566,12 @@ input:focus{
 
 .header-main {
   background-color: #1A161F;
-  /* animation: 990000s linear 0s infinite normal none running scroll; */
 }
 
 .movie-headerlogo {
   font-size: 25px;
   color: white;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* left Menu */
 *,
@@ -600,9 +587,11 @@ body {
 }
 
 .leftMenu {
-  display: grid;
-  align-content: space-between;
-  border-right: 3px solid #b9b9b91a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* align-content: space-between; */
+  /* border-right: 3px solid #b9b9b91a; */
 }
 
 .leftMenu a {
@@ -614,18 +603,8 @@ body {
   color: #a0a0a0;
 }
 
-a:after {
-  content:"";
-  position: absolute;
-  background-color: #ff3c78;
-  height: 3px;
-  width: 0;
-  left: 0;
-  bottom: -2px;
-  transition: 0.3s;
-}
-
 a:hover{
+  transform: scale(1.05);
   color: #fff;
 }
 
@@ -644,19 +623,18 @@ a:hover:after{
 .menuLine {
   display: flex;
   align-items: center;
-  background-color: #cfcfcf1a;
-  border: 1px solid transparent;
   border-radius: 20px;
   margin-bottom: 10px;
   padding: 5px;
 }
 
 .menu {
-  padding-top: 250px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-top: 150px;
+  align-items: center;
+  max-width: 220px;
+  flex: 95%;
   text-align: left;
-  gap: 2px;
+  gap: 4px;
   justify-content: center;
 }
 
@@ -672,9 +650,44 @@ a:hover:after{
 }
 
 .profile {
+  flex: 5%;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   padding-bottom: 80px;
   color: #a0a0a0;
 }
+
+.profile img {
+  width: 48px;
+}
+
+.menuLine input {
+  padding: 6px 8px 6px 8px;
+  border-radius: 12px;
+  width: 140px;
+  border: 1px solid yellow;
+  background-color: #171717;
+  color: white;
+
+}
 /* left Menu */
+
+.title {
+  position: relative;
+  width: 425px;
+}
+
+.title .active{
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+
+  backdrop-filter: blur(2px);
+  position: absolute;
+  bottom: 25px;
+  left: 10px;
+  color: rgb(0, 174, 255);
+  font-size: 10px;
+  max-width: 100%;
+}

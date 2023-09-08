@@ -28,11 +28,11 @@ async function logIn(name,password) {
     setInputValueAndClass(null,null,null,false,null,false)
     try {
         let users = await fetchData("https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users");
-        if (users.find(x => name.value === x.userName && password.value === x.password)) {
+        const foundUser = users.find(el => name.value === el.userName && password.value === el.password);
+        if (foundUser) {
             setActivePanel(false);
             showMoviesUpcoming(true);
-            showMoviesPopular(true);
-            showMoviesToprated(true);
+            activeUser(foundUser)
         } else {
             setLoginAllDiv(null,null,"User Name/Password wrong!",true)
             setInputValueAndClass(true,null,true,true,null,true)
@@ -40,4 +40,18 @@ async function logIn(name,password) {
     } catch (error) {
         console.error("Log in error:", error);
     }
+}
+
+// User Profile Eklentisi
+const leftMenu = document.querySelector(".leftMenu")
+function activeUser(user){
+    leftMenu.innerHTML += `
+    <div class="profile">
+        <img src="assets/image/man.png" alt="">
+        <div class="name">
+            <h2>${user.userName}</h2>
+            <p>İD:${user.id}</p>
+        </div>
+    </div>
+    `
 }
