@@ -1,6 +1,8 @@
 const rightDiv = document.querySelector(".rightMovie");
 const popularMovie = document.querySelector(".upperMovie")
 const topRated = document.querySelector(".lowerMovie")
+const rightScrollBtn = document.querySelector(".rightScroll")
+const leftScrollBtn = document.querySelector(".leftScroll")
 const postPath = "http://image.tmdb.org/t/p/w500";
 
 async function showMoviesUpcoming(iswork) {
@@ -141,13 +143,6 @@ function resetDivHtml(tr,pm,rd) {
     }):null;
 }
 
-window.addEventListener("hashchange",() => {
-    console.log("deneme");
-    setActiveHome(false)
-    setActivePanel(true)
-})
-
-
 rightDiv.addEventListener("mouseover",(e) => {
     if(e.target.className === "upComing"){
         e.target.children[1].children[1].className = "active"
@@ -171,3 +166,38 @@ rightDiv.addEventListener("mouseout",(e) => {
         e.target.className = "deactive"
     }
 })
+
+
+// Kaydırma efekti
+
+let scrollValue = 0;
+
+rightScrollBtn.addEventListener("click", function () {
+  scrollValue += 820;
+  smoothScroll(scrollValue);
+});
+
+
+leftScrollBtn.addEventListener("click", function () {
+  scrollValue -= 820;
+  smoothScroll(scrollValue);
+});
+
+function smoothScroll(targetScrollValue) {
+  const duration = 500; 
+  const startScrollValue = topRated.scrollLeft;
+  let startTime;
+// burdan sonrası youtube + chatGpt
+  function animation(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const elapsedTime = currentTime - startTime;
+    const scrollProgress = Math.min(elapsedTime / duration, 1);
+    topRated.scrollLeft = startScrollValue + (targetScrollValue - startScrollValue) * scrollProgress;
+
+    if (scrollProgress < 1) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
+}
