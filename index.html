@@ -8,6 +8,8 @@
     <script src="assets/js/user.js" defer></script>
     <script src="assets/js/home.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/helper.js" defer></script>
+    <script src="assets/js/loginSignup.js" defer></script>
 
 
 </head>
@@ -19,11 +21,12 @@
         <form class="form">
             <div class="login-all">
                 <p class="text">Login</p>
+                <h5 class="detailmsg"></h5>
                 <div class="Username">
                     <input class="input-name" placeholder="Username.." type="name">
                 </div>
                 <div class="password">
-                    <input class="input-phone" placeholder="Phone.." type="text">
+                    <input class="input-phone" placeholder="Phone.." type="number">
                     <input class="input-password" placeholder="Password.." type="password">
                 </div>
                 <div class="buttons">
@@ -36,87 +39,53 @@
     </div>
     
     <div class="container">
-        <header>
-            <div class="links">
-                <button>&#8801;</button>
+        <section class="header-main">
+            <section class="movie-header">
+                <div class="movie-headerlogo">
+                    LOGO
+                </div>
+                <div class="header-link">
+                    <a href="#">Home</a>
+                    <a href="#">Series</a>
+                </div>
+                <div class="movie-bell">
+                   <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgb(255, 255, 255);">
+                    <path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path>
+                </svg></a>
+                </div>
+            </section>
+        </section>
+        <div class="movieDiv">
+            <div class="leftMenu">
+
             </div>
-        </header>
-        <div class="upper-div">
-          <img src="assets/image/thumb-1920-1003880.png" alt="Resim">
-          <div class="title">
-                <h1>ALLAHUAKBAR FİLMİ</h1>
-                <h4>BİLMEM NE ZAMAN OLAN BİR ŞEY</h4>
-                <div class="subtitle">
-                    <button class="getTicketBtn"><p>BİLET AL</p></button>
-                    <h5>24/08/2023 | İMBD 8.5</h5>
+            <div class="centerMovie">
+                <div class="upper">
+                    <header><h1>Most Popular🔥</h1></header>
+                    <div class="upperMovie">
+                        
+                        <div class="custom-loader"></div>
+                    </div>
+                </div>
+                <div class="lower">
+                    <header><h1>Top Rated⭐</h1></header>
+                    <div class="lowerMovie">
+                        <div class="custom-loader"></div>
+                    </div>
                 </div>
                 
-          </div>
-        </div>
-        <div class="lower-div">
-            <div class="movie-list">
-                <h1 class="movie-list-title">Populer Filmler</h1>
-            </div>
-            <div class="movie-control">
-                <!-- cardlarin li yapıları -->
-                <ul class="movie-mid">
-                 <li class="movie-card">
-                     <img class="movie-card-img" src="assets/image/moive-card-1.jpg" alt="">
-                 <div class="movie-text">
-                     <span class="movie-card-text">Black Adam</span>
-                 </div>
-                 </li>
-                 <li class="movie-card">
-                     <img class="movie-card-img" src="assets/image/moive-card-1.jpg" alt="">
-                 <div class="movie-text">
-                     <span class="movie-card-text">Black Adam</span>
-                 </div>
-                 </li>
-                 <li class="movie-card">
-                    <img class="movie-card-img" src="assets/image/moive-card-1.jpg" alt="">
-                <div class="movie-text">
-                    <span class="movie-card-text">Black Adam</span>
-                </div>
-                </li>
-                <li class="movie-card">
-                    <img class="movie-card-img" src="assets/image/moive-card-1.jpg" alt="">
-                <div class="movie-text">
-                    <span class="movie-card-text">Black Adam</span>
-                </div>
-                </li>
-                <li class="movie-card">
-                    <img class="movie-card-img" src="assets/image/moive-card-1.jpg" alt="">
-                <div class="movie-text">
-                    <span class="movie-card-text">Black Adam</span>
-                </div>
-                </li>
-                <li class="movie-card">
-                    <img class="movie-card-img" src="assets/image/moive-card-1.jpg" alt="">
-                <div class="movie-text">
-                    <span class="movie-card-text">Black Adam</span>
-                </div>
-                </li><li class="movie-card">
-                    <img class="movie-card-img" src="assets/image/moive-card-1.jpg" alt="">
-                <div class="movie-text">
-                    <span class="movie-card-text">Black Adam</span>
-                </div>
-                </li><li class="movie-card">
-                    <img class="movie-card-img" src="assets/image/moive-card-1.jpg" alt="">
-                <div class="movie-text">
-                    <span class="movie-card-text">Black Adam</span>
-                </div>
-                </li>
-                </ul>
-           </div>
-            <div class="popularMovie">
-                <div class="movie">
-
-                </div>
-            </div>
-            <div class="upcomingMovie">
 
             </div>
+            <div class="rightMovie">
+                <header>
+                    <h1>Upcoming Movie🍿</h1>
+                </header>
+                
+                <div class="upComing">
+                    <div class="custom-loader"></div>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
 </body>
 </html>

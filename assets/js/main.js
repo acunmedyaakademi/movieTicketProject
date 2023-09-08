@@ -1,124 +1,109 @@
-const signUpBtn = document.querySelector(".signup-btn")
-const logInBtn = document.querySelector(".login-btn")
-const forgotPasswordBtn = document.querySelector(".forgot-passwordBtn")
-const nameInput = document.querySelector(".input-name")
-const phoneInput = document.querySelector(".input-phone")
-const passwordInput = document.querySelector(".input-password")
-const mainContainer = document.querySelector(".container")
-const panelContainer = document.querySelector(".panelContainer")
-const backImage = document.querySelector(".backImage")
-const form = document.querySelector(".form")
-const loginAllDiv = document.querySelector(".login-all")
+const signUpBtn = document.querySelector(".signup-btn");
+const logInBtn = document.querySelector(".login-btn");
+const forgotPasswordBtn = document.querySelector(".forgot-passwordBtn");
+const nameInput = document.querySelector(".input-name");
+const phoneInput = document.querySelector(".input-phone");
+const passwordInput = document.querySelector(".input-password");
+const form = document.querySelector(".form");
+const blurryImage = document.querySelector(".blurry-image");
 
-let doOnce = 0;
-
-signUpBtn.addEventListener("click",(e) => {
-    e.preventDefault()
-
-
-    loginAllDiv.innerHTML = `<p class="text">SignUp</p>
-    <div class="Username">
-        <input class="input-name" placeholder="Username.." type="name">
-    </div>
-    <div class="password">
-        <input class="input-phone active" placeholder="Phone.." type="text">
-        <input class="input-password" placeholder="Generate Password.." type="text">
-    </div>
-    <div class="buttons">
-        <button class="login-btn">Login</button>
-        <button class="signup-btn">Sign Up</button>
-    </div>
-    <button class="forgot-passwordBtn">Forgot Password</button>`
-
-});
-
-logInBtn.addEventListener("click",(e) => {
-    e.preventDefault()
-    
-    if(nameInput.value === ""){
-        nameInput.classList.add("warn");
-        return;
-    } else if (passwordInput.value === ""){
-        nameInput.classList.remove("warn");
-        passwordInput.classList.add("warn");
-        return;
-    } else {
-        passwordInput.classList.remove("warn");
-        logIn();
-        return;
-    }
-    
-    e.preventDefault()
-    e.target.parentElement.parentElement.innerHTML = `<p class="text">Login</p>
-    <div class="Username">
-        <input class="input-name" placeholder="Username.." type="name">
-    </div>
-    <div class="password">
-        <input class="input-phone" placeholder="Phone.." type="text">
-        <input class="input-password" placeholder="Password.." type="text">
-    </div>
-    <div class="buttons">
-        <button class="login-btn">Login</button>
-        <button class="signup-btn">Sign Up</button>
-    </div>
-    <button class="forgot-passwordBtn">Forgot Password</button>`
-});
-
-
-const fetchData = async (url) => {
-    return await fetch(url,{
-        headers: {
-            "Content-Type":"application/json",
-            "Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3BndGZyenR2ZXFncXlja25xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MzQxMjM4NCwiZXhwIjoyMDA4OTg4Mzg0fQ.fxxdxsJkoR5d_1IsCiar6iiGa2WUi5UWAPo_N_dXggg",
-            "apikey":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3BndGZyenR2ZXFncXlja25xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MzQxMjM4NCwiZXhwIjoyMDA4OTg4Mzg0fQ.fxxdxsJkoR5d_1IsCiar6iiGa2WUi5UWAPo_N_dXggg"
+signUpBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    setLoginAllDiv(true,true)
+    if (phoneInput.classList.contains("active")) {
+        if (nameInput.value === "") {
+            setLoginAllDiv(null,null,"Please enter the required information!",true)
+            nameInput.classList.add("warn");
+            return;
+        } else if (phoneInput.value === "") {
+            setLoginAllDiv(null,null,"Please enter the required information!",true)
+            setInputValueAndClass(null,null,null,false,true,null)
+            return;
+        }else if (nameInput.value.length < 4) {
+            setLoginAllDiv(null,null,"Username must be at least 4 characters long!",true)
+            nameInput.classList.add("warn");
+            return;
+        }else if (passwordInput.value === "") {
+            setLoginAllDiv(null,null,"Please enter the required information!",true)
+            setInputValueAndClass(null,null,null,false,false,true)
+            return;
+        } else if (phoneInput.value.length === 11 && phoneInput.value.startsWith('05')) {
+            if (passwordInput.value.length < 6 || !passwordInput.value.match(/\d/)) {
+                setLoginAllDiv(null,null,"Password must be at least 6 characters long and contain at least one digit!",true)
+                passwordInput.classList.add("warn");
+                return;
+            }
+            passwordInput.classList.remove("warn");
+            try {
+                await signUp(nameInput,phoneInput,passwordInput);
+            } catch (error) {
+                console.error("Sign up error:", error);
+            }
+            return;
+        } else {
+            setLoginAllDiv(null,null,"Please enter the right phone number!",true)
+            phoneInput.classList.add("warn");
         }
-    }).then(response => response.json())
-}
-
-const postData = async (url, data) => {
-    return await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer your_access_token_here',
-            'apikey': 'your_api_key_here'
-        },
-        body: JSON.stringify(data)  // Göndermek istediğiniz veriyi JSON formatına dönüştürüp ekleyin
-    }).then(response => response.json());
-}
-
-async function signUp () {
-    let data = {
-        userName: `${nameInput.value}`,
-        phone: `${phoneInput.value}`,
-        password: `${passwordInput.value}`
-
     }
-    postData('https://example.com/api', data)
-    .then(responseData => {
-        console.log('POST Response:', responseData);
-    })
-    .catch(error => {
-        console.error('POST Error:', error);
-    });
-}
+    setInputValueAndClass(null,null,null,false,null,false)
+    blurryImage.classList.add("active");
+    phoneInput.classList.add("active");
+});
 
-
-async function logIn () {
-    let users = await fetchData("https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users")
-    if(users.find(x =>  nameInput.value === x.userName&&users.find(x =>  passwordInput.value === x.password))){
-        panelContainer.innerHTML = ``
-        mainContainer.classList.add("active")
-        backImage.classList.add("deactive")
+logInBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    setInputValueAndClass(null,null,null,false,null,false)
+    setLoginAllDiv(true,null,null,false)
+    if (phoneInput.classList.contains("active")) { 
+        phoneInput.classList.remove("active");
+        setLoginAllDiv(null,false)
+        return;
         
-    }else {
-        nameInput.classList.add("warn");
-        passwordInput.classList.add("warn");
-        nameInput.value = "";
-        passwordInput.value = "";
+    } else {
+        if (nameInput.value === "") {
+            setLoginAllDiv(null,null,"Please enter the required information",true)
+            nameInput.classList.add("warn");
+            if (passwordInput.value === "") {
+                passwordInput.classList.add("warn");
+            }
+            return;
+
+        } else if (passwordInput.value === "") {
+            setLoginAllDiv(null,null,"Please enter the required information",true)
+            setInputValueAndClass(null,null,null,false,null,true)
+            return;
+        } else {
+            passwordInput.classList.remove("warn");
+            
+            try {
+                await logIn(nameInput,passwordInput);
+            } catch (error) {
+                console.error("Login Error:", error);
+            }
+            
+            return;
+        }
     }
+});
+
+forgotPasswordBtn.addEventListener("click",(e) => {
+    e.preventDefault()
+    loginAllDiv.children[1].textContent = "Forgot Password is out of use!";
+})
+
+async function resetInputValue() {
+    (passwordInput,nameInput,phoneInput).value = "";
+    (passwordInput,nameInput,phoneInput).classList.remove("warn")
+    phoneInput.classList.remove("active"),
+    loginAllDiv(null,true,"Your account has been created! You can now login..",false)
 }
 
+function setInputValueAndClass(resetName,resetPhone,resetPassword,nameClass,phoneClass,passwordClass){
+    resetName === true ? nameInput.value = "":null;
+    resetPhone === true ? phoneInput.value = "":null;
+    resetPassword === true ? passwordInput.value = "":null;
 
-
-// cards 
+    nameClass === true ? nameInput.classList.add("warn"):nameInput.classList.remove("warn")
+    phoneClass === true ? phoneInput.classList.add("warn"):phoneInput.classList.remove("warn")
+    passwordClass === true ? passwordInput.classList.add("warn"):passwordInput.classList.remove("warn")
+}
