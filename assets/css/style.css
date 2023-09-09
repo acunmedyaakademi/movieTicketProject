@@ -309,7 +309,7 @@ input:focus{
   max-width: 1000px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  /* gap: 8px; */
 }
 
 .upperMovie {
@@ -493,7 +493,8 @@ input:focus{
 .inside {
   display: flex;
   flex-direction: row;
-  position: absolute;
+  /* position: absolute; */
+  margin-bottom: -210px;
   align-items: center;
   backdrop-filter: blur(0.8px);
   width: 100%;

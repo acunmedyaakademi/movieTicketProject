@@ -88,6 +88,7 @@ async function showMoviesPopular(iswork) {
             }
         });
         showMoviesToprated(true);
+        scrollContent()
     } catch (error) {
         console.error('Error fetching and displaying data:', error);
     }
@@ -205,4 +206,35 @@ function smoothScroll(targetScrollValue) {
     }
 
     requestAnimationFrame(animation);
+}
+
+
+
+// üst div kayma işlemi 
+let inside = document.querySelector(".inside")
+var scrollDistance = 1000000;
+var scrollSpeed = 10;
+
+var scrollLeft = 0;
+var scrollingRight = true;
+
+// Kaydırma işlemi
+function scrollContent() {
+    if (scrollingRight) {
+        if (scrollLeft < scrollDistance) {
+        scrollLeft++;
+        } else {
+        scrollingRight = false;
+        }
+    } else {
+        if (scrollLeft > 0) {
+        scrollLeft--;
+        } else {
+        scrollingRight = true;
+        }
+    }
+    //   console.log(insideDiv);
+    popularMovie.scrollLeft = scrollLeft;
+
+    setTimeout(scrollContent, scrollSpeed);
 }
