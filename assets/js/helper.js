@@ -5,6 +5,20 @@ function setActiveHome(set) {
     set === true ? mainContainer.classList.add("active"):mainContainer.classList.remove("active");
 }
 
+mainContainer.addEventListener("click",(e) => {
+    if(e.target.id !== null ){
+        if(e.target.tagName === "IMG"){
+            // buyDialog(e.target.id)
+            if(e.target.className === "toprated"){
+                buyDialog(e.target.id,"top_rated")
+            }else if(e.target.className === "popular"){
+                buyDialog(e.target.id,"popular")
+            }
+        }
+        
+    }
+})
+
 // Panel Container görünürlük fonsksiyonu
 const backImage = document.querySelector(".backImage");
 const panelContainer = document.querySelector(".panelContainer");

@@ -31,7 +31,7 @@ async function showMoviesUpcoming(iswork) {
                     movieElement.classList.add('movie');
                     movieElement.innerHTML = `
                         <div class="upComing">
-                            <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}" id="${movie.id}">
+                            <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}">
                             <div class="title">
                                 <h2>${movie.title}</h2>
                                 <h5 class="deactive">${movie.overview}</h5>
@@ -74,14 +74,14 @@ async function showMoviesPopular(iswork) {
                     movieElement.innerHTML = `
                     <div class="upComing">
                         <div class="inside">
-                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}/İmage">
+                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}/İmage" id="${movie.id}" class="popular">
                             <div class="info">
                                 <h3>${movie.title}</h3>
                                 <p>Release Date: ${movie.release_date}</p>
                                 <h5>Vote Average : ${movie.vote_average} | Vote Count : ${movie.vote_count}</h5>
                             </div>
                         </div>
-                        <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}/İmage" id="${movie.id}">
+                        <img src="${postPath}${movie.backdrop_path}" alt="${movie.title}/İmage" >
                     </div>
                     `;
                     popularMovie.appendChild(movieElement);
@@ -119,7 +119,7 @@ async function showMoviesToprated(iswork) {
                     movieElement.classList.add('movieRated');
                     movieElement.innerHTML = `
                         <div class="upComing">
-                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}" id="${movie.id}">
+                            <img src="${postPath}${movie.poster_path}" alt="${movie.title}" id="${movie.id}" class="toprated">
                         </div>
                     `;
                     topRated.appendChild(movieElement);
@@ -168,7 +168,7 @@ rightDiv.addEventListener("mouseout",(e) => {
 })
 
 
-// Kaydırma efekti
+// Top Rated Kaydırma efekti
 
 let scrollValue = 0;
 
