@@ -7,6 +7,10 @@ const passwordInput = document.querySelector(".input-password");
 const form = document.querySelector(".form");
 const blurryImage = document.querySelector(".blurry-image");
 
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+});
+
 signUpBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     setLoginAllDiv(true,true)
@@ -95,7 +99,7 @@ async function resetInputValue() {
     (passwordInput,nameInput,phoneInput).value = "";
     (passwordInput,nameInput,phoneInput).classList.remove("warn")
     phoneInput.classList.remove("active"),
-    loginAllDiv(null,true,"Your account has been created! You can now login..",false)
+    setLoginAllDiv(null,true,"Your account has been created! You can now login..",false)
 }
 
 function setInputValueAndClass(resetName,resetPhone,resetPassword,nameClass,phoneClass,passwordClass){

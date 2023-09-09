@@ -461,6 +461,7 @@ input:focus{
 
 .centerMovie .custom-loader {
   margin-left: 450px;
+  margin-top: 75px;
   overflow: hidden;
   width: 50px;
   height: 50px;
@@ -730,4 +731,99 @@ a:hover:after{
 .scrollBtn .rightScroll {
   position: absolute;
   right: -50px;
+}
+
+.searchDialog {
+  border: none;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  backdrop-filter: blur(1px);
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  border-radius: 16px;
+
+}
+
+.dialogContainer {
+  min-width: 500px;
+  min-height: 270px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 16px;
+
+}
+
+.dialogBackimg img{
+  position: absolute;
+  /* object-fit: cover; */
+  border-radius: 16px;
+}
+
+.poster {
+  margin-top: 20px;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 4px;
+}
+
+.poster img {
+  margin: 8px;
+  width: 150px;
+  border-radius: 12px;
+}
+
+.buy {
+  position: absolute;
+  padding: 8px;
+  background-color: #ffe500;
+  border-radius: 8px;
+  border: none;
+  width: 320px;
+  bottom: 7px;
+  transition:  250ms;
+}
+.buy:hover {
+  transform: scale(1.03);
+  background-color: rgb(0, 167, 0);
+}
+
+.dialogInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  gap: 12px;
+}
+
+.dialogClose {
+  z-index: 999999;
+  display: flex;
+  position: absolute;
+  right: 5px;
+  top: 15px;
+}
+.dialogClose p {
+  cursor: pointer;
+}
+.dialogClose p:hover {
+  transform: scale(1.1);
+}
+
+.dialogTitle {
+  color: brown;
+  font-weight: 700;
+}
+
+.dialogOverview {
+  color:#1692f8;
 }

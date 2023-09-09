@@ -14,7 +14,7 @@ async function signUp(name,phone,password) {
         }else {
            await Promise.all([
                 postData('https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users', data),
-                resetInputValue() 
+                resetInputValue()
             ]);
         }
     } catch (error) {
