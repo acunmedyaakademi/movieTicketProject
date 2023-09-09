@@ -181,7 +181,7 @@ rightScrollBtn.addEventListener("click", function () {
 
 
 leftScrollBtn.addEventListener("click", function () {
-    if(scrollValue < 0){
+    if(scrollValue <= 0){
         return scrollValue = 0;
     }
     scrollValue -= 820;
