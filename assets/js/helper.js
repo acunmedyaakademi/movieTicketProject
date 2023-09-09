@@ -5,7 +5,12 @@ function setActiveHome(set) {
     set === true ? mainContainer.classList.add("active"):mainContainer.classList.remove("active");
 }
 
+// maine container tıklama işlemleri
 mainContainer.addEventListener("click",(e) => {
+    
+    if(e.target.className === "profileBtn"){
+        return profileFind(e.target.id)
+    }
     if(e.target.id !== null ){
         if(e.target.tagName === "IMG"){
             // buyDialog(e.target.id)

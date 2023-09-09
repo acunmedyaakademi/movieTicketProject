@@ -23,6 +23,7 @@ async function signUp(name,phone,password) {
 }
 
 // Logİn GET işlemi 
+const menu = document.querySelector(".menu")
 async function logIn(name,password) {
     setLoginAllDiv(true)
     setInputValueAndClass(null,null,null,false,null,false)
@@ -30,6 +31,7 @@ async function logIn(name,password) {
         let users = await fetchData("https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users");
         const foundUser = users.find(el => name.value === el.userName && password.value === el.password);
         if (foundUser) {
+            menu.children[3].children[1].id = `${foundUser.id}`;
             setActivePanel(false);
             showMoviesUpcoming(true);
             activeUser(foundUser)

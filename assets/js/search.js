@@ -56,8 +56,14 @@ searchInput.addEventListener("keydown", async (e) => {
     }
 });
 
-searchDialog.addEventListener("click",(e) => {
-    e.target.parentElement.className === "dialogClose" ? searchDialog.close():null;
+searchDialog.addEventListener("click",async (e) => {
+    if(e.target.parentElement.className === "dialogClose"){
+        searchDialog.close()
+        searchDialog.innerHTML = "";
+    }else if(e.target.className === "deleteAccount"){
+        await deleteData(e.target.id)
+        // window.location.reload()
+    }
 })
 
 async function findClickedMovie(e,dataPath) {
@@ -110,3 +116,67 @@ async function buyDialog(e,datapath) {
         window.alert("Film bulunamadı")
     }
 }
+
+async function profileFind(id) {
+    try {
+        let users = await fetchData("https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users");
+        const foundUser = users.find(el => el.id == id);
+        if (foundUser) {
+            profileDialog(foundUser)
+
+        } else {window.alert("KULLANICI BULUNAMADI (İD) HATASI")}
+
+    } catch (error) {
+        console.error("Log in error:", error);
+    }
+}
+
+function profileDialog(user) {
+        searchDialog.innerHTML = `
+            <div class="dialogContainer">
+                <div class="dialogClose">
+                    <p>❌</p>
+                </div>
+                <div class="dialogBackimg" >
+                    <img src="assets/image/thumb-1920-1003880.png" alt="Dialog">
+                </div>
+                <div class="poster">
+                    <img src="assets/image/man.png" alt="Dialog" >
+                    <div class="dialogInfo">
+                        <div class="dialogTitle">
+                            <h2>${user.userName} | ID: ${user.id}</h2>
+                        </div>
+                        <div class="dialogOverview">
+                            <button class="changePassword">ChangePassword</button>
+                        </div>
+                        <div class="dialogDelete">
+                            <button class="deleteAccount" id="${user.id}">Delete Account</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        searchDialog.showModal();
+}
+
+const deleteData = async (id) => {
+    console.log(id);
+    try {
+        const response = await fetch(`https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users/${id}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3BndGZyenR2ZXFncXlja25xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MzQxMjM4NCwiZXhwIjoyMDA4OTg4Mzg0fQ.fxxdxsJkoR5d_1IsCiar6iiGa2WUi5UWAPo_N_dXggg",
+                "apikey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4d3BndGZyenR2ZXFncXlja25xIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5MzQxMjM4NCwiZXhwIjoyMDA4OTg4Mzg0fQ.fxxdxsJkoR5d_1IsCiar6iiGa2WUi5UWAPo_N_dXggg" 
+            }
+        });
+        
+        if (response.status === 204) {
+            console.log("Başarıyla silindi.");
+        } else {
+            console.error("Silme hatası:", response.status);
+        }
+    } catch (error) {
+        console.error("Fetch hatası:", error);
+    }
+};

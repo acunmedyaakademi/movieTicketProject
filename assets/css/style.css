@@ -734,6 +734,7 @@ a:hover:after{
 }
 
 .searchDialog {
+  z-index: 9;
   border: none;
   left: 50%;
   top: 50%;
@@ -748,6 +749,7 @@ a:hover:after{
 }
 
 .dialogContainer {
+  z-index: 10;
   min-width: 500px;
   min-height: 270px;
   overflow: hidden;
@@ -761,12 +763,16 @@ a:hover:after{
 }
 
 .dialogBackimg img{
+  z-index: 10;
+
   position: absolute;
   /* object-fit: cover; */
   border-radius: 16px;
 }
 
 .poster {
+  z-index: 10;
+
   margin-top: 20px;
   z-index: 999;
   display: flex;
@@ -777,12 +783,16 @@ a:hover:after{
 }
 
 .poster img {
+  z-index: 10;
+
   margin: 8px;
   width: 150px;
   border-radius: 12px;
 }
 
 .buy {
+  z-index: 10;
+
   position: absolute;
   padding: 8px;
   background-color: #ffe500;
@@ -798,6 +808,8 @@ a:hover:after{
 }
 
 .dialogInfo {
+  z-index: 10;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -827,3 +839,28 @@ a:hover:after{
 .dialogOverview {
   color:#1692f8;
 }
+
+.changePassword {
+  background-color: #ffe500;
+  padding: 4px 16px 4px 16px;
+  width: 150px;
+  border: none;
+  border-radius: 8px;
+}
+
+.deleteAccount {
+  background-color: #ff0000;
+  padding: 4px 16px 4px 16px;
+  border: none;
+  width: 150px;
+  border-radius: 8px;
+}
+
+.deleteAccount:hover {
+  transform: scale(1.05);
+}
+
+.changePassword:hover {
+  transform: scale(1.05);
+}
+

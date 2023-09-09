@@ -12,7 +12,6 @@ async function showMoviesUpcoming(iswork) {
     setActiveHome(true)
     const pageCount = 20;
     const requests = [];
-
     for (let page = 1; page <= pageCount; page++) {
         const url = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=${page}`;
         requests.push(fetchMovieData(url));
@@ -173,31 +172,37 @@ rightDiv.addEventListener("mouseout",(e) => {
 let scrollValue = 0;
 
 rightScrollBtn.addEventListener("click", function () {
-  scrollValue += 820;
-  smoothScroll(scrollValue);
+    if(scrollValue <0){
+        return scrollValue = 0;
+    }
+    scrollValue += 820;
+    smoothScroll(scrollValue);
 });
 
 
 leftScrollBtn.addEventListener("click", function () {
-  scrollValue -= 820;
-  smoothScroll(scrollValue);
+    if(scrollValue < 0){
+        return scrollValue = 0;
+    }
+    scrollValue -= 820;
+    smoothScroll(scrollValue);
 });
 
 function smoothScroll(targetScrollValue) {
-  const duration = 500; 
-  const startScrollValue = topRated.scrollLeft;
-  let startTime;
+    const duration = 500; 
+    const startScrollValue = topRated.scrollLeft;
+    let startTime;
 // burdan sonrası youtube + chatGpt
-  function animation(currentTime) {
-    if (!startTime) startTime = currentTime;
-    const elapsedTime = currentTime - startTime;
-    const scrollProgress = Math.min(elapsedTime / duration, 1);
-    topRated.scrollLeft = startScrollValue + (targetScrollValue - startScrollValue) * scrollProgress;
+    function animation(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const elapsedTime = currentTime - startTime;
+        const scrollProgress = Math.min(elapsedTime / duration, 1);
+        topRated.scrollLeft = startScrollValue + (targetScrollValue - startScrollValue) * scrollProgress;
 
-    if (scrollProgress < 1) {
-      requestAnimationFrame(animation);
+        if (scrollProgress < 1) {
+        requestAnimationFrame(animation);
+        }
     }
-  }
 
-  requestAnimationFrame(animation);
+    requestAnimationFrame(animation);
 }
