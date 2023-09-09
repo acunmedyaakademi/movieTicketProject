@@ -7,7 +7,6 @@ function setActiveHome(set) {
 
 // maine container tıklama işlemleri
 mainContainer.addEventListener("click",(e) => {
-    
     if(e.target.className === "profileBtn"){
         return profileFind(e.target.id)
     }
@@ -19,8 +18,7 @@ mainContainer.addEventListener("click",(e) => {
             }else if(e.target.className === "popular"){
                 buyDialog(e.target.id,"popular")
             }
-        }
-        
+        }  
     }
 })
 

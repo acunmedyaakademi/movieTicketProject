@@ -63,6 +63,8 @@ searchDialog.addEventListener("click",async (e) => {
     }else if(e.target.className === "deleteAccount"){
         await deleteData(e.target.id)
         // window.location.reload()
+    }else if(e.target.className === "buy"){
+        return buyTicket()
     }
 })
 
@@ -180,3 +182,10 @@ const deleteData = async (id) => {
         console.error("Fetch hatası:", error);
     }
 };
+
+function buyTicket() {
+    console.log("aktif");
+    searchDialog.innerHTML += `
+            <h2>Satın Alma İşlevi Şuan Aktif Değil</h2>
+    `;
+}

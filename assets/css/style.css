@@ -522,6 +522,7 @@ input:focus{
 }
 
 .inside .info {
+  text-shadow: 2px 2px 3px black, 0 0 6em black, 0 0 0.6em black;
   max-width: 260px;
   color: #ffffff;
   
@@ -832,12 +833,15 @@ a:hover:after{
 }
 
 .dialogTitle {
-  color: brown;
+  color: rgb(0, 0, 0);
   font-weight: 700;
+  text-shadow: 1px 1px 2px rgb(255, 252, 252), 0 0 1em rgb(255, 255, 255), 0 0 0.6em rgb(252, 252, 252);
 }
 
 .dialogOverview {
-  color:#1692f8;
+  color:#ffffff;
+  text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.6em black;
+
 }
 
 .changePassword {
