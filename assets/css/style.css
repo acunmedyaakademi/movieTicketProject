@@ -876,3 +876,76 @@ a:hover:after{
   transform: scale(1.05);
 }
 
+.slideProfileDiv {
+  transition: 400ms;
+  left: -250px;
+  background-color: #1a161ff5;
+  display: flex;
+  backdrop-filter: blur(10);
+  flex-direction: column;
+  gap: 24px;
+  z-index: 999;
+  position: absolute;
+  height: 100%;
+  width: 250px;
+}
+
+.slideProfileDiv .back img{
+  /* position: absolute; */
+  margin-left: 215px;
+  margin-top: 15px;
+  width: 36px;
+}
+
+.slideProfileDiv .back img:hover{
+  transform: scale(1.1);
+}
+
+.slideProfile {
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 100px; */
+}
+
+.slideProfile .upTitle {
+  margin-bottom: 50px;
+  text-shadow: 0.2px 0.2px 0.5px rgba(255, 252, 252, 0.603), 0 0 0.1em rgba(255, 255, 255, 0.678), 0 0 0.1em rgba(252, 252, 252, 0.61);
+}
+
+.slideProfile .profileImage {
+  /* z-index: 999; */
+  position: absolute;
+  top: 0;
+}
+
+.slideProfile h5 {
+  position:absolute;
+  bottom: 5px;
+}
+
+.slideProfile .slideLinks{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+}
+
+.slideProfile .slideLinks button {
+  /* width: 150px; */
+  padding: 8px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: large;
+}
+
+.slideProfile .slideLinks button:hover {  
+  transform: scale(1.1);
+}
+
+
+.slideProfileDiv.active {
+  transform: translateX(250px);
+  transition: 400ms;
+}

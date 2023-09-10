@@ -118,34 +118,6 @@ async function buyDialog(e,datapath) {
     }
 }
 
-function profileDialog(user) {
-        searchDialog.showModal();
-        searchDialog.innerHTML = `
-            <div class="dialogContainer">
-                <div class="dialogClose">
-                    <p>❌</p>
-                </div>
-                <div class="dialogBackimg" >
-                    <img src="assets/image/thumb-1920-1003880.png" alt="Dialog">
-                </div>
-                <div class="poster">
-                    <img src="assets/image/man.png" alt="Dialog" >
-                    <div class="dialogInfo">
-                        <div class="dialogTitle">
-                            <h2>${user.userName} | ID: ${user.id}</h2>
-                        </div>
-                        <div class="dialogOverview">
-                            <button class="changePassword">ChangePassword</button>
-                        </div>
-                        <div class="dialogDelete">
-                            <button class="deleteAccount" id="${user.id}">Delete Account</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-}
-
 const deleteData = async (id) => {
     console.log(id);
     try {

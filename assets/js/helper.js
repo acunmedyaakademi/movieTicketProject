@@ -7,8 +7,11 @@ function setActiveHome(set) {
 
 // maine container tıklama işlemleri
 mainContainer.addEventListener("click",(e) => {
+    console.log(e.target.className);
     if(e.target.className === "profileBtn"){
-        return profileFind(e.target.id)
+        return showProfile(true)
+    }else if(e.target.className === "slideBack"){
+        showProfile(false)
     }
     if(e.target.id !== null ){
         if(e.target.tagName === "IMG"){
@@ -97,17 +100,4 @@ function setLoginAllDiv (reset,setPanelName,setİnformation,addClass){
     setPanelName === true ? (loginAllDiv.children[0].textContent = "SignUp"):(loginAllDiv.children[0].textContent = "LogIn");
     setİnformation !== "" ? (loginAllDiv.children[1].textContent = setİnformation):null;
     addClass === true ? (loginAllDiv.children[0].classList.add("changer")):(loginAllDiv.children[0].classList.remove("changer"))
-}
-
-// Profil gösterimi için fetch+ find işlemi
-async function profileFind(id) {
-    try {
-        let users = await fetchData("https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users");
-        const foundUser = users.find(el => el.id == id);
-        if (foundUser) {
-            profileDialog(foundUser)
-        } else {window.alert("KULLANICI BULUNAMADI (İD) HATASI")}
-    } catch (error) {
-        console.error("Log in error:", error);
-    }
 }

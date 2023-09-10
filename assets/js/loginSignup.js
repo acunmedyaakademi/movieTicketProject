@@ -32,6 +32,7 @@ async function logIn(name,password) {
         const foundUser = users.find(el => name.value === el.userName && password.value === el.password);
         if (foundUser) {
             menu.children[3].children[1].id = `${foundUser.id}`;
+            slideActiveProfile(foundUser)
             setActivePanel(false);
             showMoviesUpcoming(true);
             activeUser(foundUser)
