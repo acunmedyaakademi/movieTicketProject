@@ -695,38 +695,51 @@ a:hover:after{
   max-width: 100%;
 }
 
-.scrollBtn {
-  margin-left: 10px;
+/* .scrollBtn {
+  margin-left: 12px;
   position: absolute;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   z-index: 99;
   top: 535px;
   bottom: 130px;
-  width: 870px;
-}
+  width: 880px;
+} */
 
-.scrollBtn button{
-  padding: 12px;
-  font-size: large;
-  /* width: 100px; */
-  background-color: #d8d8d8d3;
-  border-radius: 48px;
-  border: none;
-}
 
 .scrollBtn button:hover {
   transform: scale(1.2);
 }
 
-.scrollBtn .leftScroll {
+.leftScroll{
+  min-width: 48px;
+  min-height: 48px;
+  z-index: 99;
+  padding: 12px;
+  font-size: large;
+  top: 530px;
+  bottom: 350px;
   position: absolute;
-  /* right: -100px; */
+  background-color: #d8d8d8d3;
+  border-radius: 48px;
+  border: none;
+  left: 220px;
 }
 
-.scrollBtn .rightScroll {
+.rightScroll{
+  min-width: 48px;
+  min-height: 48px;
+  z-index: 99;
+  padding: 12px;
+  font-size: large;
+  top: 530px;
+  bottom: 350px;
   position: absolute;
-  right: -100px;
+  background-color: #d8d8d8d3;
+  border-radius: 48px;
+  border: none;
+  right: 330px;
 }
 
 .searchDialog {
