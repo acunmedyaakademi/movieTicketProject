@@ -30,11 +30,14 @@ mainContainer.addEventListener("click",(e) => {
 })
 
 // Panel Container görünürlük fonsksiyonu
+const textlogo = document.querySelector(".ticket-text");
 const backImage = document.querySelector(".backImage");
 const panelContainer = document.querySelector(".panelContainer");
 function setActivePanel(set){
         set === true ? panelContainer.classList.remove("deactive"):panelContainer.classList.add("deactive")
         set === true ? backImage.classList.remove("deactive"):backImage.classList.add("deactive")
+        set === true ? textlogo.classList.remove("deactive"):textlogo.classList.add("deactive")
+        
 }
 
 // Fetch GET işlemleri SUPABASE 
