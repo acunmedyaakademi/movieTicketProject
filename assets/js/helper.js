@@ -98,3 +98,16 @@ function setLoginAllDiv (reset,setPanelName,setİnformation,addClass){
     setİnformation !== "" ? (loginAllDiv.children[1].textContent = setİnformation):null;
     addClass === true ? (loginAllDiv.children[0].classList.add("changer")):(loginAllDiv.children[0].classList.remove("changer"))
 }
+
+// Profil gösterimi için fetch+ find işlemi
+async function profileFind(id) {
+    try {
+        let users = await fetchData("https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users");
+        const foundUser = users.find(el => el.id == id);
+        if (foundUser) {
+            profileDialog(foundUser)
+        } else {window.alert("KULLANICI BULUNAMADI (İD) HATASI")}
+    } catch (error) {
+        console.error("Log in error:", error);
+    }
+}

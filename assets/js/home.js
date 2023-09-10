@@ -1,6 +1,7 @@
 const rightDiv = document.querySelector(".rightMovie");
 const popularMovie = document.querySelector(".upperMovie")
 const topRated = document.querySelector(".lowerMovie")
+const centerMovieDiv = document.querySelector(".centerMovie")
 const rightScrollBtn = document.querySelector(".rightScroll")
 const leftScrollBtn = document.querySelector(".leftScroll")
 const postPath = "http://image.tmdb.org/t/p/w500";
@@ -131,6 +132,12 @@ async function showMoviesToprated(iswork) {
     }
 }
 
+
+function setActiveDiv(center,right) {
+    center === true ? centerMovieDiv.classList.remove("deactive"):centerMovieDiv.classList.add("deactive")
+    right === true ? rightDiv.classList.remove("deactive"):rightDiv.classList.add("deactive")
+    center&&right === true ? activeProfile():null;
+}
 
 function resetDivHtml(tr,pm,rd) {
     tr === true ? topRated.innerHTML = "":null;

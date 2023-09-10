@@ -87,7 +87,7 @@ async function findClickedMovie(e,dataPath) {
 async function buyDialog(e,datapath) {
     console.log("buy dialog id:",e);
     const foundMovie = await findClickedMovie(e,datapath);
-    console.log(foundMovie);
+    searchDialog.showModal();
     if (foundMovie) {
         searchDialog.innerHTML = `
             <div class="dialogContainer" id="${foundMovie.id}">
@@ -113,27 +113,13 @@ async function buyDialog(e,datapath) {
                 </div>
             </div>
         `;
-        searchDialog.showModal();
     } else {
         window.alert("Film bulunamadı")
     }
 }
 
-async function profileFind(id) {
-    try {
-        let users = await fetchData("https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users");
-        const foundUser = users.find(el => el.id == id);
-        if (foundUser) {
-            profileDialog(foundUser)
-
-        } else {window.alert("KULLANICI BULUNAMADI (İD) HATASI")}
-
-    } catch (error) {
-        console.error("Log in error:", error);
-    }
-}
-
 function profileDialog(user) {
+        searchDialog.showModal();
         searchDialog.innerHTML = `
             <div class="dialogContainer">
                 <div class="dialogClose">
@@ -158,7 +144,6 @@ function profileDialog(user) {
                 </div>
             </div>
         `;
-        searchDialog.showModal();
 }
 
 const deleteData = async (id) => {
@@ -184,7 +169,6 @@ const deleteData = async (id) => {
 };
 
 function buyTicket() {
-    console.log("aktif");
     searchDialog.innerHTML += `
             <h2>Satın Alma İşlevi Şuan Aktif Değil</h2>
     `;
