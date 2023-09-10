@@ -949,3 +949,70 @@ a:hover:after{
   transform: translateX(250px);
   transition: 400ms;
 }
+
+.mainProfile.deactive{
+  display: none;
+}
+
+.mainProfile{
+  display: flex;
+  border-radius: 12px;
+  padding: 16px;
+  z-index: 999;
+  position: absolute;
+  background-color: #a5a5a5f5;
+  width: 400px;
+  height: 200px;
+  left: 35%;
+  top: 30%;
+  bottom: 70%;
+  right: 70%;
+  justify-content: space-between;
+  /* transform: translate(-50%, -50%); */
+}
+
+.mainProfile img {
+  width: 100px;
+  height: 100px;
+}
+
+.mainProfileDeleteBtn{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.mainProfileDeleteBtn:hover {
+  transform: scale(1.1);
+}
+
+.mainProfileInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mainProfileInfo .mainProfileTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mainProfileInfo button {
+  padding: 8px;
+  border-radius: 12px;
+  border: none;
+}
+
+.mainProfileInfo .mainProfileButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.mainProfileInfo button:hover {
+  transform: scale(1.1);
+}
