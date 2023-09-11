@@ -7,12 +7,11 @@ function setActiveHome(set) {
 
 // maine container tıklama işlemleri
 mainContainer.addEventListener("click",(e) => {
-    console.log(e.target.className);
     if(e.target.className === "profileBtn"){
         return showProfile(true)
     }else if(e.target.className === "slideBack"){
         return showProfile(false)
-    }else if(e.target.className === "name"){
+    }else if(e.target.parentElement.className === "name"){
         return showProfile(true)
     }
     if(e.target.id !== null ){
@@ -76,7 +75,6 @@ const postData = async (url, data) => {
 // Fetch işlemleri TMBD MOVİE APİ 
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDc5N2RkNGU0MWU3ODE1MWY0NmE1MTBmM2M1MmJiMSIsInN1YiI6IjY0ZWZjNGVhY2FhNTA4MDE0YzhiMzJhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UWMW2nEvwjByMme8MI_Pgwc3l0j6wH5NLB5Zgf1a26k';
 async function fetchMovieData(url) {
-    console.log("url:",url);
     const options = {
         method: 'GET',
         headers: {
