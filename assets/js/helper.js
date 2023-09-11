@@ -12,10 +12,6 @@ mainContainer.addEventListener("click",(e) => {
         return showProfile(true)
     }else if(e.target.className === "slideBack"){
         showProfile(false)
-    }else if(e.target.className === "mainProfileBtn"){
-        activeMainProfile()
-    }else if(e.target.className === "mainProfileDeleteBtn"){
-        removeMainProfile()
     }
     if(e.target.id !== null ){
         if(e.target.tagName === "IMG"){
@@ -72,10 +68,10 @@ const postData = async (url, data) => {
     }
 };
 
-
 // Fetch işlemleri TMBD MOVİE APİ 
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDc5N2RkNGU0MWU3ODE1MWY0NmE1MTBmM2M1MmJiMSIsInN1YiI6IjY0ZWZjNGVhY2FhNTA4MDE0YzhiMzJhZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.UWMW2nEvwjByMme8MI_Pgwc3l0j6wH5NLB5Zgf1a26k';
 async function fetchMovieData(url) {
+    console.log("url:",url);
     const options = {
         method: 'GET',
         headers: {
@@ -95,7 +91,6 @@ async function fetchMovieData(url) {
         throw error;
     }
 }
-
 
 // İnformation Mesajı ve Stil ayarları (loginAllDiv) ayarları 
 const loginAllDiv = document.querySelector(".login-all");

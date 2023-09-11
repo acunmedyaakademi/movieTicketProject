@@ -143,7 +143,6 @@ function resetDivHtml(tr,pm,rd) {
     tr === true ? topRated.innerHTML = "":null;
     pm === true ? popularMovie.innerHTML = "":null;
     rd === true ? rightDiv.forEach(x => {
-        console.log(x);
         if(x.className === "upComing"){
             rightDiv.pop(x)
         }
@@ -240,7 +239,6 @@ function scrollContent() {
         scrollingRight = true;
         }
     }
-    //   console.log(insideDiv);
     popularMovie.scrollLeft = scrollLeft;
 
     setTimeout(scrollContent, scrollSpeed);

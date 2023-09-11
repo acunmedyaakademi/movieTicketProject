@@ -19,42 +19,53 @@ async function findMovie() {
     return showMovie;
 }
 
+async function findMovieSearch() {
+    const pageCount = 20;
+    let  movieList = null;
+    let newİnput = setValue()
+    movieList = await fetchMovieData(`https://api.themoviedb.org/3/search/movie?query=${newİnput}&include_adult=false&language=en-US&page=1`);
+    return movieList;
+}
+
+function setValue(){
+    var newValue = searchInput.value.replace(/ /g, '%20');
+    if (newValue === searchInput.value) {
+        return searchInput.value;
+    }else {return newValue;}
+}
+
+
+const searchDiv = document.querySelector(".searchDiv")
 searchInput.addEventListener("keydown", async (e) => {
     if (e.key === "Enter") {
-        const foundMovie = await findMovie();
-
-        if (foundMovie) {
-            searchDialog.innerHTML = `
-                <div class="dialogContainer">
-                    <div class="dialogClose">
-                        <p>❌</p>
-                    </div>
-                    <div class="dialogBackimg">
-                        <img src="${postPathSearch}${foundMovie.backdrop_path}" alt="Dialog">
-                    </div>
-                    <div class="poster">
-                        <img src="${postPathSearch}${foundMovie.poster_path}" alt="">
-                        <div class="dialogInfo">
-                            <div class="dialogTitle">
-                                <h2>${foundMovie.title} | IMBD: ${foundMovie.vote_average}</h2>
-                            </div>
-                            <div class="dialogOverview">
-                                <h5>${foundMovie.overview}</h5>
-                            </div>
-                            <div class="dialogBuy">
-                                <button class="buy">Buy Now</button>
+        searchDiv.classList.remove("deactive")
+        let searchMovieData = await findMovieSearch()
+        searchMovieData.results.forEach(foundMovie => {
+            if(foundMovie.backdrop_path === null){
+                return
+            }
+            searchDiv.innerHTML += `
+                <div class="searchDivContainer">
+                    <div class="searchPoster">
+                        <img src="${postPathSearch}${foundMovie.poster_path}" alt="POSTER PATH ERROR">
+                        <div class="searhcInfo">
+                            <div class="searchBuy">
+                                <button class="searchBuy">Buy Now</button>
                             </div>
                         </div>
                     </div>
                 </div>
             `;
-            searchInput.value = ""
-            searchDialog.showModal();
-        } else {
-            window.alert("Film bulunamadı")
+        });
+            
+        searchInput.value = ""
         }
     }
-});
+);
+
+searchDiv.addEventListener("click",(e) => {
+    e.target.className === "searchDivCloseBtn" ? searchDiv.classList.add("deactive"):null;
+})
 
 searchDialog.addEventListener("click",async (e) => {
     if(e.target.parentElement.className === "dialogClose"){
@@ -85,7 +96,6 @@ async function findClickedMovie(e,dataPath) {
 
 
 async function buyDialog(e,datapath) {
-    console.log("buy dialog id:",e);
     const foundMovie = await findClickedMovie(e,datapath);
     searchDialog.showModal();
     if (foundMovie) {
@@ -119,7 +129,6 @@ async function buyDialog(e,datapath) {
 }
 
 const deleteData = async (id) => {
-    console.log(id);
     try {
         const response = await fetch(`https://gxwpgtfrztveqgqycknq.supabase.co/rest/v1/users/${id}`, {
             method: 'DELETE',

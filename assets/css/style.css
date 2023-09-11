@@ -713,8 +713,8 @@ a:hover:after{
 }
 
 .leftScroll{
-  min-width: 48px;
-  min-height: 48px;
+  width: 48px;
+  height: 48px;
   z-index: 99;
   padding: 12px;
   font-size: large;
@@ -728,8 +728,8 @@ a:hover:after{
 }
 
 .rightScroll{
-  min-width: 48px;
-  min-height: 48px;
+  width: 48px;
+  height: 48px;
   z-index: 99;
   padding: 12px;
   font-size: large;
@@ -740,6 +740,8 @@ a:hover:after{
   border-radius: 48px;
   border: none;
   right: 330px;
+  left: 1150px;
+
 }
 
 .searchDialog {
@@ -910,6 +912,7 @@ a:hover:after{
 }
 
 .slideProfile .upTitle {
+  text-align: center;
   margin-bottom: 50px;
   text-shadow: 0.2px 0.2px 0.5px rgba(255, 252, 252, 0.603), 0 0 0.1em rgba(255, 255, 255, 0.678), 0 0 0.1em rgba(252, 252, 252, 0.61);
 }
@@ -950,69 +953,51 @@ a:hover:after{
   transition: 400ms;
 }
 
-.mainProfile.deactive{
+.searchDiv.deactive {
   display: none;
 }
 
-.mainProfile{
-  display: flex;
-  border-radius: 12px;
-  padding: 16px;
-  z-index: 999;
+.searchDiv {
+  font-size: 12px;
+  gap: 16px;
+  text-align: center;
   position: absolute;
-  background-color: #a5a5a5f5;
-  width: 400px;
-  height: 200px;
-  left: 35%;
-  top: 30%;
-  bottom: 70%;
-  right: 70%;
-  justify-content: space-between;
-  /* transform: translate(-50%, -50%); */
-}
-
-.mainProfile img {
-  width: 100px;
-  height: 100px;
-}
-
-.mainProfileDeleteBtn{
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  background-color: transparent;
-  border: none;
-}
-
-.mainProfileDeleteBtn:hover {
-  transform: scale(1.1);
-}
-
-.mainProfileInfo {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.mainProfileInfo .mainProfileTitle {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.mainProfileInfo button {
-  padding: 8px;
-  border-radius: 12px;
-  border: none;
-}
-
-.mainProfileInfo .mainProfileButtons {
-  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   flex-direction: row;
-  gap: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #9b9b9b4d;
+  z-index: 999;
+  overflow: scroll;
 }
 
-.mainProfileInfo button:hover {
+.searchPoster img {
+  object-fit: cover;
+  /* position: absolute; */
+  width: 150px;
+  border-radius: 16px;
+}
+
+
+.searchBuy {
+  border-radius: 12px;
+  /* padding: 8px; */
+  width: 150px;
+  height: 30px;
+  border: none;
+}
+
+.searchDivCloseBtn {
+  font-size: larger;
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.searchDivCloseBtn:hover {
   transform: scale(1.1);
 }
