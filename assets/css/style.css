@@ -565,7 +565,7 @@ input:focus{
 
 .movie-headerlogo {
   font-size: 25px;
-  color: white;
+  color:yellow;
 }
 
 /* left Menu */
@@ -690,7 +690,7 @@ a:hover:after{
   position: absolute;
   bottom: 25px;
   left: 10px;
-  color: rgb(0, 174, 255);
+ color: yellow;
   font-size: 10px;
   max-width: 100%;
 }
@@ -941,10 +941,14 @@ a:hover:after{
   border: none;
   border-radius: 12px;
   font-size: large;
+  background-color: #252525;
+  color: white;
 }
 
 .slideProfile .slideLinks button:hover {  
   transform: scale(1.1);
+  color: #252525;
+  background-color: yellow;
 }
 
 
@@ -1000,4 +1004,14 @@ a:hover:after{
 
 .searchDivCloseBtn:hover {
   transform: scale(1.1);
+}
+
+.ticket-text {
+  position: absolute;
+  z-index: 99999;
+  font-size: 50px;
+  color: white;
+  left: 45%;
+  top: 20%;
+ transform: translate(-50%,-50%);  
 }
