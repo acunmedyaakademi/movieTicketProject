@@ -11,7 +11,9 @@ mainContainer.addEventListener("click",(e) => {
     if(e.target.className === "profileBtn"){
         return showProfile(true)
     }else if(e.target.className === "slideBack"){
-        showProfile(false)
+        return showProfile(false)
+    }else if(e.target.className === "name"){
+        return showProfile(true)
     }
     if(e.target.id !== null ){
         if(e.target.tagName === "IMG"){

@@ -1015,3 +1015,8 @@ a:hover:after{
   top: 20%;
  transform: translate(-50%,-50%);  
 }
+
+
+.name {
+  cursor: pointer;
+}
